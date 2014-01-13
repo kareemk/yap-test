@@ -5,6 +5,7 @@ describe "Application 'yap-test'" do
 
     txn_proc = proc do |txn|
       txn.removeAllObjectsInAllCollections
+      # Deleting this line eliminates the crash
       txn.setObject('value', forKey: 'id', inCollection: 'test')
     end
     conn.readWriteWithBlock(txn_proc)
